@@ -1,15 +1,11 @@
 # What it is
 
-A short and simple (and horribly inefficient) bottom-up implementation of Datalog in javascript with heavy code commentary.
+A short and simple (and horribly inefficient) bottom-up implementation of Datalog in javascript with [heavy code commentary](http://joyrexus.github.io/datalog.js/).
 
 
 ## Wait, what is Datalog?
 
-Datalog is a logical query language. It exists somewhere between relational
-algebra (the formal theory behind SQL) and Prolog, but is closer in motivation
-to the former than the later. It was invented to apply some of the principles
-of logic programming to database theory. Its primary addition to the semantics
-of databases is recursive queries.
+[Datalog](http://en.wikipedia.org/wiki/Datalog) is a logical query language. It exists somewhere between relational algebra (the formal theory behind SQL) and Prolog, but is closer in motivation to the former than the later. It was invented to apply some of the principles of logic programming to database theory. Its primary addition to the semantics of databases is recursive queries.
 
 
 ## Implementation

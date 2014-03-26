@@ -1,6 +1,6 @@
 # What it is
 
-A short and simple (and horribly inefficient) bottom-up implementation of Datalog in javascript with [heavy code commentary](http://joyrexus.github.io/datalog.js/).
+A bottom-up implementation of Datalog in javascript with [heavy code commentary](http://joyrexus.github.io/datalog.js/). It's short and simple and horribly inefficient. The aim is merely to demonstrate what Datalog is and how it works in principle.
 
 
 ## Wait, what is Datalog?
@@ -30,4 +30,15 @@ Right now every query simply builds up a complete database of facts first, by ta
   the ideas in Prolog.
 
 * [SICP, sect 4.4](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-29.html#%_sec_4.4) - SICP's logic programming chapter.
+
+* [PAIP, chapts 11-12]() - Peter Norvig's [Paradigms of Artificial
+  Intelligence Programming](http://norvig.com/paip-preface.html) 
+  presents the key ideas behind Prolog in chapters 11 and 12, and
+  uses these ideas in subsequent chapters, particularly 20 and 21.
+  (Prolog is a declarative logic programming language like Datalog
+  with [different features and limitations](http://en.wikipedia.org/wiki/Datalog#Features.2C_limitations_and_extensions).)
+  In chapter 11 Norvig walks through the construction of a Prolog 
+  interpreter/compiler in Common Lisp. Source code available 
+  [here](http://norvig.com/paip/README.html).
+
 

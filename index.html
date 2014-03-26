@@ -6,17 +6,6 @@
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
-  <script type="text/javascript" src="http://underscorejs.org/underscore.js"></script>
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
-  <script type="text/javascript" src="https://raw.github.com/fkettelhoit/bottom-up-datalog-js/master/resources/parallel/jump-to-definition.js"></script>
-  <script type="text/javascript" src="http://flesler-plugins.googlecode.com/files/jquery.localscroll-1.2.7-min.js"></script> 
-  <script type="text/javascript" src="http://flesler-plugins.googlecode.com/files/jquery.scrollTo-1.4.3.1-min.js"></script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-    addLinks();
-    $.localScroll({duration:500});
-    });
-  </script>
 </head>
 <body>
   <div id="container">
@@ -58,7 +47,7 @@ them all.</p>
 
             </div>
             
-            <div class="content"><div class="highlight"><pre><span class="keyword">var</span> facts = [
+            <div class="content"><div class='highlight'><pre><span class="keyword">var</span> facts = [
   [<span class="string">"parent"</span>, <span class="string">"alice"</span>, <span class="string">"bob"</span>],
   [<span class="string">"parent"</span>, <span class="string">"alice"</span>, <span class="string">"bill"</span>],
   [<span class="string">"parent"</span>, <span class="string">"bob"</span>, <span class="string">"carol"</span>],
@@ -101,7 +90,7 @@ rules to derive them. This part is what makes Datalog interesting.</p>
 
             </div>
             
-            <div class="content"><div class="highlight"><pre><span class="keyword">var</span> rules = [
+            <div class="content"><div class='highlight'><pre><span class="keyword">var</span> rules = [
   [[<span class="string">"ancestor"</span>, <span class="string">"X"</span>, <span class="string">"Y"</span>], [<span class="string">"parent"</span>, <span class="string">"X"</span>, <span class="string">"Y"</span>]],
   [[<span class="string">"ancestor"</span>, <span class="string">"X"</span>, <span class="string">"Y"</span>], [<span class="string">"ancestor"</span>, <span class="string">"X"</span>, <span class="string">"Z"</span>],
                            [<span class="string">"ancestor"</span>, <span class="string">"Z"</span>, <span class="string">"Y"</span>]],
@@ -137,7 +126,7 @@ our query against all the facts in the database.</p>
 
             </div>
             
-            <div class="content"><div class="highlight"><pre><span class="function"><span class="keyword">function</span> <span class="title">answerQuery</span><span class="params">(facts, rules, query)</span> {</span>
+            <div class="content"><div class='highlight'><pre><span class="function"><span class="keyword">function</span> <span class="title">answerQuery</span><span class="params">(facts, rules, query)</span> {</span>
   <span class="keyword">return</span> evalQuery(buildDatabase(facts, rules), query);
 }</pre></div></div>
             
@@ -170,7 +159,7 @@ fancy lingo: Until a fixpoint is reached)</p>
 
             </div>
             
-            <div class="content"><div class="highlight"><pre><span class="function"><span class="keyword">function</span> <span class="title">buildDatabase</span><span class="params">(facts, rules)</span> {</span>
+            <div class="content"><div class='highlight'><pre><span class="function"><span class="keyword">function</span> <span class="title">buildDatabase</span><span class="params">(facts, rules)</span> {</span>
   <span class="keyword">var</span> newFacts = _.reduce(rules, applyRule, facts);
   <span class="keyword">if</span> (facts.length == newFacts.length) {
     <span class="keyword">return</span> facts;
@@ -207,7 +196,7 @@ existing facts, discarding all duplicate entries.</p>
 
             </div>
             
-            <div class="content"><div class="highlight"><pre><span class="function"><span class="keyword">function</span> <span class="title">applyRule</span><span class="params">(facts, rule)</span> {</span>
+            <div class="content"><div class='highlight'><pre><span class="function"><span class="keyword">function</span> <span class="title">applyRule</span><span class="params">(facts, rule)</span> {</span>
   <span class="keyword">var</span> newFacts = _.union(facts, ruleAsFacts(facts, rule));
   <span class="keyword">return</span> _.uniq(newFacts, <span class="literal">false</span>, JSON.stringify);
 }</pre></div></div>
@@ -244,7 +233,7 @@ for which the rule becomes a true fact.</p>
 
             </div>
             
-            <div class="content"><div class="highlight"><pre><span class="function"><span class="keyword">function</span> <span class="title">ruleAsFacts</span><span class="params">(facts, rule)</span> {</span>
+            <div class="content"><div class='highlight'><pre><span class="function"><span class="keyword">function</span> <span class="title">ruleAsFacts</span><span class="params">(facts, rule)</span> {</span>
   <span class="keyword">var</span> allPossibleBindings = generateBindings(facts, rule);
   <span class="keyword">return</span> _.map(allPossibleBindings, _.partial(substitute, rule[<span class="number">0</span>]))
 }</pre></div></div>
@@ -269,7 +258,7 @@ all these matched bindings.</p>
 
             </div>
             
-            <div class="content"><div class="highlight"><pre><span class="function"><span class="keyword">function</span> <span class="title">substitute</span><span class="params">(query, bindings)</span> {</span>
+            <div class="content"><div class='highlight'><pre><span class="function"><span class="keyword">function</span> <span class="title">substitute</span><span class="params">(query, bindings)</span> {</span>
   <span class="keyword">return</span> _.map(query, _.partial(unifyVar, bindings));
 }
 
@@ -328,7 +317,7 @@ the other goals.</p>
 
             </div>
             
-            <div class="content"><div class="highlight"><pre><span class="function"><span class="keyword">function</span> <span class="title">generateBindings</span><span class="params">(facts, rule)</span> {</span>
+            <div class="content"><div class='highlight'><pre><span class="function"><span class="keyword">function</span> <span class="title">generateBindings</span><span class="params">(facts, rule)</span> {</span>
   <span class="keyword">var</span> goals = _.map(_.rest(rule), _.partial(evalQuery, facts));
   <span class="keyword">return</span> _.reduce(_.rest(goals), unifyBindingArrays, _.first(goals));
 }</pre></div></div>
@@ -374,7 +363,7 @@ resulting collection in the end.</p>
 
             </div>
             
-            <div class="content"><div class="highlight"><pre><span class="function"><span class="keyword">function</span> <span class="title">unifyBindingArrays</span><span class="params">(arr1, arr2)</span> {</span>
+            <div class="content"><div class='highlight'><pre><span class="function"><span class="keyword">function</span> <span class="title">unifyBindingArrays</span><span class="params">(arr1, arr2)</span> {</span>
   <span class="keyword">return</span> _.flatten(_.map(arr1, <span class="keyword">function</span>(bindings) {
     <span class="keyword">return</span> _.compact(_.map(arr2, _.partial(unifyBindings, bindings)))
   }))
@@ -396,7 +385,7 @@ bindings fails).</p>
 
             </div>
             
-            <div class="content"><div class="highlight"><pre><span class="function"><span class="keyword">function</span> <span class="title">unifyBindings</span><span class="params">(bindings1, bindings2)</span> {</span>
+            <div class="content"><div class='highlight'><pre><span class="function"><span class="keyword">function</span> <span class="title">unifyBindings</span><span class="params">(bindings1, bindings2)</span> {</span>
   <span class="keyword">var</span> joined = _.defaults(_.clone(bindings1), bindings2);
   <span class="keyword">if</span> (_.isEqual(joined, _.extend(_.clone(bindings1), bindings2))) {
     <span class="keyword">return</span> joined;
@@ -433,7 +422,7 @@ results as bindings.</p>
 
             </div>
             
-            <div class="content"><div class="highlight"><pre><span class="function"><span class="keyword">function</span> <span class="title">evalQuery</span><span class="params">(facts, query)</span> {</span>
+            <div class="content"><div class='highlight'><pre><span class="function"><span class="keyword">function</span> <span class="title">evalQuery</span><span class="params">(facts, query)</span> {</span>
   <span class="keyword">var</span> matchingFacts = _.filter(facts, _.partial(unify, query));
   <span class="keyword">return</span> _.map(matchingFacts, _.partial(asBinding, query));
 }</pre></div></div>
@@ -470,7 +459,7 @@ because the atoms <code>&quot;bob&quot;</code> and <code>&quot;carol&quot;</code
 
             </div>
             
-            <div class="content"><div class="highlight"><pre><span class="function"><span class="keyword">function</span> <span class="title">unify</span><span class="params">(query, fact)</span> {</span>
+            <div class="content"><div class='highlight'><pre><span class="function"><span class="keyword">function</span> <span class="title">unify</span><span class="params">(query, fact)</span> {</span>
   <span class="keyword">return</span> _.every(_.zip(query, fact), <span class="keyword">function</span>(pair) {
     <span class="keyword">return</span> pair[<span class="number">0</span>] == pair[<span class="number">1</span>] || isVariable(pair[<span class="number">0</span>]) || isVariable(pair[<span class="number">1</span>]);
   });
@@ -505,7 +494,7 @@ matching atoms in the fact as values, e.g. <code>{&quot;X&quot;: &quot;alice&quo
 
             </div>
             
-            <div class="content"><div class="highlight"><pre><span class="function"><span class="keyword">function</span> <span class="title">asBinding</span><span class="params">(query, fact)</span> {</span>
+            <div class="content"><div class='highlight'><pre><span class="function"><span class="keyword">function</span> <span class="title">asBinding</span><span class="params">(query, fact)</span> {</span>
   <span class="keyword">return</span> _.pick(_.object(query, fact), _.filter(query, isVariable));
 }</pre></div></div>
             
@@ -541,7 +530,7 @@ should be true:</p>
 
             </div>
             
-            <div class="content"><div class="highlight"><pre><span class="function"><span class="keyword">function</span> <span class="title">assertQuery</span><span class="params">(query, result)</span> {</span>
+            <div class="content"><div class='highlight'><pre><span class="function"><span class="keyword">function</span> <span class="title">assertQuery</span><span class="params">(query, result)</span> {</span>
   console.assert(_.isEqual(answerQuery(facts, rules, query), result))
 }
 
